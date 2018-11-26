@@ -36,19 +36,17 @@ syn keyword chefImportant action
 syn keyword chefImportant not_if
 syn keyword chefImportant only_if
 
-syn keyword chefResource 
-      \package
-      \execute
-      \git
-      \service
-      \file
-      \remote_directory
-      \remote_file
-      \template
-      \directory
-      \cookbook_file
-      \user
-
+syn keyword chefResource package
+syn keyword chefResource execute
+syn keyword chefResource git
+syn keyword chefResource service
+syn keyword chefResource file
+syn keyword chefResource remote_directory
+syn keyword chefResource remote_file
+syn keyword chefResource template
+syn keyword chefResource directory
+syn keyword chefResource cookbook_file
+syn keyword chefResource user
 
 syn keyword chefDirective include_recipe
 syn keyword chefDirective recipe
