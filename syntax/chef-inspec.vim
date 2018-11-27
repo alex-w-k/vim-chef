@@ -1,3 +1,6 @@
+runtime! syntax/ruby.vim
+unlet! b:current_syntax
+
 syn keyword chefResource apt_package
 syn keyword chefResource apt_preference
 syn keyword chefResource apt_repository
@@ -144,3 +147,5 @@ highlight link inspecTestKeywords Constant
 syntax keyword inspecMatchers to to_not not_to be change eq eql equal exist have have_at_least have_at_most have_exactly include match matcher raise_error raise_exception respond_to statisfy throw_symbol when wrap_expectation
 syntax match inspecMatchers /\<\(be\|have\)_\w\+\>/
 highlight link inspecMatchers Function
+
+let b:current_syntax='chef-inspec'
