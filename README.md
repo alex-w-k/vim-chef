@@ -1,7 +1,7 @@
 vim-chef
 ========
 
-Vim plugins for chef (syntax highliting and autocomplete snipmate)
+Vim plugins for chef (syntax highliting)
 
 
 Install
