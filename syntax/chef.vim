@@ -297,6 +297,7 @@ syn keyword chefProperty iconlocation contained
 syn keyword chefProperty identifier contained
 syn keyword chefProperty idle_time contained
 syn keyword chefProperty ignore_error contained
+syn keyword chefProperty ignore_failure contained
 syn keyword chefProperty ignore_failures contained
 syn keyword chefProperty imports contained
 syn keyword chefProperty include_config contained
