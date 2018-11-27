@@ -1,7 +1,6 @@
 runtime! syntax/ruby.vim
 runtime! syntax/eruby.vim
 
-
 syn keyword chefResource apt_package
 syn keyword chefResource apt_preference
 syn keyword chefResource apt_repository
