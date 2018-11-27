@@ -8,6 +8,9 @@ Install
 ===============
 
 Load in with your plugin manager of choice:
+
+Two examples here:
+
 Vundle:
 ```
 Bundle 'alex-w-k/vim-chef'

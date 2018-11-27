@@ -594,8 +594,8 @@ syn keyword chefDirective node
 syn keyword chefKeyword not_if contained
 syn keyword chefKeyword only_if contained
 
-hi link chefProperty Identifier
 hi link chefResource Statement
+hi link chefProperty Identifier
 hi link chefDirective Keyword
 hi link chefKeyword Statement
 
