@@ -1,107 +1,110 @@
-syn keyword chefProperty accept_eula
-syn keyword chefProperty action
-syn keyword chefProperty allow_untrusted
-syn keyword chefProperty app
-syn keyword chefProperty arch
-syn keyword chefProperty architecture
-syn keyword chefProperty atomic_update
-syn keyword chefProperty backup
-syn keyword chefProperty bypass_proxy
-syn keyword chefProperty cache_rebuild
-syn keyword chefProperty checksum
-syn keyword chefProperty clear_sources
-syn keyword chefProperty code
-syn keyword chefProperty command
-syn keyword chefProperty comment
-syn keyword chefProperty compile_time
-syn keyword chefProperty components
-syn keyword chefProperty config_key
-syn keyword chefProperty configuration_data
-syn keyword chefProperty configuration_data_script
-syn keyword chefProperty configuration_name
-syn keyword chefProperty cookbook
-syn keyword chefProperty creates
-syn keyword chefProperty cron_name
-syn keyword chefProperty cwd
-syn keyword chefProperty deb_src
-syn keyword chefProperty default_release
-syn keyword chefProperty destination
-syn keyword chefProperty distribution
-syn keyword chefProperty dmg_name
-syn keyword chefProperty dmg_passphrase
-syn keyword chefProperty domain
-syn keyword chefProperty environment
-syn keyword chefProperty file
-syn keyword chefProperty flags
-syn keyword chefProperty flush_cache
-syn keyword chefProperty force_unlink
-syn keyword chefProperty frequency
-syn keyword chefProperty gem_binary
-syn keyword chefProperty glob
-syn keyword chefProperty group
-syn keyword chefProperty guard_interpreter
-syn keyword chefProperty headers
-syn keyword chefProperty home
-syn keyword chefProperty hour
-syn keyword chefProperty ignore_failures
-syn keyword chefProperty imports
-syn keyword chefProperty include_default_source
-syn keyword chefProperty inherits
-syn keyword chefProperty interpreter
-syn keyword chefProperty key
-syn keyword chefProperty key_proxy
-syn keyword chefProperty keyserver
-syn keyword chefProperty mailto
-syn keyword chefProperty manage_symlink_source
-syn keyword chefProperty minute
-syn keyword chefProperty mode
-syn keyword chefProperty module_name
-syn keyword chefProperty module_version
-syn keyword chefProperty name
-syn keyword chefProperty notifies
-syn keyword chefProperty option_type
-syn keyword chefProperty options
-syn keyword chefProperty overwrite_config_files
-syn keyword chefProperty owner
-syn keyword chefProperty package_id
-syn keyword chefProperty package_name
-syn keyword chefProperty password
-syn keyword chefProperty path
-syn keyword chefProperty permission
-syn keyword chefProperty pin
-syn keyword chefProperty pin_priority
-syn keyword chefProperty predefined_value
-syn keyword chefProperty principal
-syn keyword chefProperty priority
-syn keyword chefProperty property
-syn keyword chefProperty random_delay
-syn keyword chefProperty reboot_action
-syn keyword chefProperty recursive
-syn keyword chefProperty repo_name
-syn keyword chefProperty resource
-syn keyword chefProperty response_file
-syn keyword chefProperty response_file_variables
-syn keyword chefProperty retries
-syn keyword chefProperty retry_delay
-syn keyword chefProperty returns
-syn keyword chefProperty rights
-syn keyword chefProperty run_action
-syn keyword chefProperty sensitive
-syn keyword chefProperty shell
-syn keyword chefProperty source
-syn keyword chefProperty source_name
-syn keyword chefProperty subscribes
-syn keyword chefProperty time
-syn keyword chefProperty timeout
-syn keyword chefProperty trusted
-syn keyword chefProperty type
-syn keyword chefProperty umask
-syn keyword chefProperty uri
-syn keyword chefProperty user
-syn keyword chefProperty verify
-syn keyword chefProperty version
-syn keyword chefProperty volumes_dir
-syn keyword chefProperty weekday
+runtime! syntax/ruby.vim
+runtime! syntax/eruby.vim
+
+syn keyword chefProperty accept_eula contained
+syn keyword chefProperty action contained
+syn keyword chefProperty allow_untrusted contained
+syn keyword chefProperty app contained
+syn keyword chefProperty arch contained
+syn keyword chefProperty architecture contained
+syn keyword chefProperty atomic_update contained
+syn keyword chefProperty backup contained
+syn keyword chefProperty bypass_proxy contained
+syn keyword chefProperty cache_rebuild contained
+syn keyword chefProperty checksum contained
+syn keyword chefProperty clear_sources contained
+syn keyword chefProperty code contained
+syn keyword chefProperty command contained
+syn keyword chefProperty comment contained
+syn keyword chefProperty compile_time contained
+syn keyword chefProperty components contained
+syn keyword chefProperty config_key contained
+syn keyword chefProperty configuration_data contained
+syn keyword chefProperty configuration_data_script contained
+syn keyword chefProperty configuration_name contained
+syn keyword chefProperty cookbook contained
+syn keyword chefProperty creates contained
+syn keyword chefProperty cron_name contained
+syn keyword chefProperty cwd contained
+syn keyword chefProperty deb_src contained
+syn keyword chefProperty default_release contained
+syn keyword chefProperty destination contained
+syn keyword chefProperty distribution contained
+syn keyword chefProperty dmg_name contained
+syn keyword chefProperty dmg_passphrase contained
+syn keyword chefProperty domain contained
+syn keyword chefProperty environment contained
+syn keyword chefProperty file contained
+syn keyword chefProperty flags contained
+syn keyword chefProperty flush_cache contained
+syn keyword chefProperty force_unlink contained
+syn keyword chefProperty frequency contained
+syn keyword chefProperty gem_binary contained
+syn keyword chefProperty glob contained
+syn keyword chefProperty group contained
+syn keyword chefProperty guard_interpreter contained
+syn keyword chefProperty headers contained
+syn keyword chefProperty home contained
+syn keyword chefProperty hour contained
+syn keyword chefProperty ignore_failures contained
+syn keyword chefProperty imports contained
+syn keyword chefProperty include_default_source contained
+syn keyword chefProperty inherits contained
+syn keyword chefProperty interpreter contained
+syn keyword chefProperty key contained
+syn keyword chefProperty key_proxy contained
+syn keyword chefProperty keyserver contained
+syn keyword chefProperty mailto contained
+syn keyword chefProperty manage_symlink_source contained
+syn keyword chefProperty minute contained
+syn keyword chefProperty mode contained
+syn keyword chefProperty module_name contained
+syn keyword chefProperty module_version contained
+syn keyword chefProperty name contained
+syn keyword chefProperty notifies contained
+syn keyword chefProperty option_type contained
+syn keyword chefProperty options contained
+syn keyword chefProperty overwrite_config_files contained
+syn keyword chefProperty owner contained
+syn keyword chefProperty package_id contained
+syn keyword chefProperty package_name contained
+syn keyword chefProperty password contained
+syn keyword chefProperty path contained
+syn keyword chefProperty permission contained
+syn keyword chefProperty pin contained
+syn keyword chefProperty pin_priority contained
+syn keyword chefProperty predefined_value contained
+syn keyword chefProperty principal contained
+syn keyword chefProperty priority contained
+syn keyword chefProperty property contained
+syn keyword chefProperty random_delay contained
+syn keyword chefProperty reboot_action contained
+syn keyword chefProperty recursive contained
+syn keyword chefProperty repo_name contained
+syn keyword chefProperty resource contained
+syn keyword chefProperty response_file contained
+syn keyword chefProperty response_file_variables contained
+syn keyword chefProperty retries contained
+syn keyword chefProperty retry_delay contained
+syn keyword chefProperty returns contained
+syn keyword chefProperty rights contained
+syn keyword chefProperty run_action contained
+syn keyword chefProperty sensitive contained
+syn keyword chefProperty shell contained
+syn keyword chefProperty source contained
+syn keyword chefProperty source_name contained
+syn keyword chefProperty subscribes contained
+syn keyword chefProperty time contained
+syn keyword chefProperty timeout contained
+syn keyword chefProperty trusted contained
+syn keyword chefProperty type contained
+syn keyword chefProperty umask contained
+syn keyword chefProperty uri contained
+syn keyword chefProperty user contained
+syn keyword chefProperty verify contained
+syn keyword chefProperty version contained
+syn keyword chefProperty volumes_dir contained
+syn keyword chefProperty weekday contained
 
 syn keyword chefResource apt_package
 syn keyword chefResource apt_preference
