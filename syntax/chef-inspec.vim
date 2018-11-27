@@ -1,8 +1,7 @@
 runtime! syntax/ruby.vim
 unlet! b:current_syntax
 
-
-syn keyword inspecMetadata subject
+syn keyword inspecMetadata title
 hi link inspecMetadata Label
 
 syntax keyword inspecGroupMethod control describe
