@@ -1,3 +1,7 @@
+if exists("b:did_ftplugin")
+   finish
+endif
+
 if filereadable('metadata.rb') || filereadable('.kitchen.yml') || filereadable('kitchen.yml')
   augroup ChefFileTypes
     au! BufRead,BufNewFile */attributes/*.rb,*/libraries/*.rb,*/recipes/*.rb,*/resources/*.rb,*/spec/*/*.rb setfiletype chef.ruby set syntax=chef
