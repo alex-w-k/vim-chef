@@ -11,6 +11,6 @@ if filereadable('metadata.rb') || filereadable('.kitchen.yml') || filereadable('
     au! BufRead,BufNewFile */tempaltes/*.mobileconfig.erb,*/templates/*/*.mobileconfig.erb set syntax=xml.eruby
     au! BufRead,BufNewFile */templates/*.xml.erb,*/templates/*/*.xml.erb set syntax=xml.eruby
     au! BufRead,BufNewFile */controls/*.rb set syntax=chef-inspec
-    au! BufRead,BufNewFile *yml,*yaml set syntax=eruby.yaml
+    au! BufRead,BufNewFile *yml,*yaml set syntax=eruby
   augroup END
 endif
