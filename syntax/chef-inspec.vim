@@ -52,6 +52,7 @@ syn keyword chefResource dsc_resource
 syn keyword chefResource dsc_script
 syn keyword chefResource execute
 syn keyword chefResource file
+syn keyword chefResource firewalld
 syn keyword chefResource freebsd_package
 syn keyword chefResource gem_package
 syn keyword chefResource git
