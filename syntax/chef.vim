@@ -1,123 +1,124 @@
 runtime! syntax/ruby.vim
 runtime! syntax/eruby.vim
 
-syn keyword chefResource apt_package
-syn keyword chefResource apt_preference
-syn keyword chefResource apt_repository
-syn keyword chefResource apt_update
-syn keyword chefResource bash
-syn keyword chefResource batch
-syn keyword chefResource bff_package
-syn keyword chefResource breakpoint
-syn keyword chefResource build_essential
-syn keyword chefResource cab_package
-syn keyword chefResource chef_gem
-syn keyword chefResource chef_handler
-syn keyword chefResource chocolatey_config
-syn keyword chefResource chocolatey_package
-syn keyword chefResource cookbook_file
-syn keyword chefResource cron
-syn keyword chefResource cron_d
-syn keyword chefResource cron_access
-syn keyword chefResource csh
-syn keyword chefResource directory
-syn keyword chefResource dmg_package
-syn keyword chefResource dsc_resource
-syn keyword chefResource dsc_script
-syn keyword chefResource execute
-syn keyword chefResource file
-syn keyword chefResource freebsd_package
-syn keyword chefResource gem_package
-syn keyword chefResource git
-syn keyword chefResource group
-syn keyword chefResource homebrew_cask
-syn keyword chefResource homebrew_package
-syn keyword chefResource homebrew_tap
-syn keyword chefResource hostname
-syn keyword chefResource http_request
-syn keyword chefResource ifconfig
-syn keyword chefResource ips_package
-syn keyword chefResource kernel_module
-syn keyword chefResource ksh
-syn keyword chefResource launchd
-syn keyword chefResource link
-syn keyword chefResource locale
-syn keyword chefResource log
-syn keyword chefResource macos_userdefaults
-syn keyword chefResource macports_package
-syn keyword chefResource mdadm
-syn keyword chefResource mount
-syn keyword chefResource msu_package
-syn keyword chefResource ohai
-syn keyword chefResource ohai_hint
-syn keyword chefResource openbsd_package
-syn keyword chefResource openssl_dhparam
-syn keyword chefResource openssl_ec_public_key
-syn keyword chefResource openssl_ec_private_key
-syn keyword chefResource openssl_rsa_public_key
-syn keyword chefResource openssl_rsa_private_key
-syn keyword chefResource openssl_x509_certificate
-syn keyword chefResource openssl_x509_crl
-syn keyword chefResource openssl_x509_request
-syn keyword chefResource osx_profile
-syn keyword chefResource package
-syn keyword chefResource pacman_package
-syn keyword chefResource paludis_package
-syn keyword chefResource perl
-syn keyword chefResource portage_package
-syn keyword chefResource powershell_package
-syn keyword chefResource powershell_package_source
-syn keyword chefResource powershell_script
-syn keyword chefResource python
-syn keyword chefResource reboot
-syn keyword chefResource registry_key
-syn keyword chefResource remote_directory
-syn keyword chefResource remote_file
-syn keyword chefResource rhsm_errata_level
-syn keyword chefResource rhsm_errata
-syn keyword chefResource rhsm_register
-syn keyword chefResource rhsm_repo
-syn keyword chefResource rhsm_subscription
-syn keyword chefResource route
-syn keyword chefResource rpm_package
-syn keyword chefResource ruby
-syn keyword chefResource ruby_block
-syn keyword chefResource script
-syn keyword chefResource service
-syn keyword chefResource smartos_package
-syn keyword chefResource solaris_package
-syn keyword chefResource ssh_known_hosts_entry
-syn keyword chefResource subversion
-syn keyword chefResource sudo
-syn keyword chefResource swap_file
-syn keyword chefResource sysctl
-syn keyword chefResource systemd_unit
-syn keyword chefResource template
-syn keyword chefResource timezone
-syn keyword chefResource user
-syn keyword chefResource windows_ad_join
-syn keyword chefResource windows_auto_run
-syn keyword chefResource windows_certificate
-syn keyword chefResource windows_env
-syn keyword chefResource windows_feature
-syn keyword chefResource windows_feature_dism
-syn keyword chefResource windows_feature_powershell
-syn keyword chefResource windows_firewall_rule
-syn keyword chefResource windows_font
-syn keyword chefResource windows_package
-syn keyword chefResource windows_pagefile
-syn keyword chefResource windows_path
-syn keyword chefResource windows_printer
-syn keyword chefResource windows_printer_port
-syn keyword chefResource windows_service
-syn keyword chefResource windows_share
-syn keyword chefResource windows_shortcut
-syn keyword chefResource windows_task
-syn keyword chefResource windows_workgroup
-syn keyword chefResource yum_package
-syn keyword chefResource yum_repository
-syn keyword chefResource zypper_package
-syn keyword chefResource zypper_repository
+syn keyword chefResource 
+   \ apt_package
+   \ apt_preference
+   \ apt_repository
+   \ apt_update
+   \ bash
+   \ batch
+   \ bff_package
+   \ breakpoint
+   \ build_essential
+   \ cab_package
+   \ chef_gem
+   \ chef_handler
+   \ chocolatey_config
+   \ chocolatey_package
+   \ cookbook_file
+   \ cron
+   \ cron_d
+   \ cron_access
+   \ csh
+   \ directory
+   \ dmg_package
+   \ dsc_resource
+   \ dsc_script
+   \ execute
+   \ file
+   \ freebsd_package
+   \ gem_package
+   \ git
+   \ group
+   \ homebrew_cask
+   \ homebrew_package
+   \ homebrew_tap
+   \ hostname
+   \ http_request
+   \ ifconfig
+   \ ips_package
+   \ kernel_module
+   \ ksh
+   \ launchd
+   \ link
+   \ locale
+   \ log
+   \ macos_userdefaults
+   \ macports_package
+   \ mdadm
+   \ mount
+   \ msu_package
+   \ ohai
+   \ ohai_hint
+   \ openbsd_package
+   \ openssl_dhparam
+   \ openssl_ec_public_key
+   \ openssl_ec_private_key
+   \ openssl_rsa_public_key
+   \ openssl_rsa_private_key
+   \ openssl_x509_certificate
+   \ openssl_x509_crl
+   \ openssl_x509_request
+   \ osx_profile
+   \ package
+   \ pacman_package
+   \ paludis_package
+   \ perl
+   \ portage_package
+   \ powershell_package
+   \ powershell_package_source
+   \ powershell_script
+   \ python
+   \ reboot
+   \ registry_key
+   \ remote_directory
+   \ remote_file
+   \ rhsm_errata_level
+   \ rhsm_errata
+   \ rhsm_register
+   \ rhsm_repo
+   \ rhsm_subscription
+   \ route
+   \ rpm_package
+   \ ruby
+   \ ruby_block
+   \ script
+   \ service
+   \ smartos_package
+   \ solaris_package
+   \ ssh_known_hosts_entry
+   \ subversion
+   \ sudo
+   \ swap_file
+   \ sysctl
+   \ systemd_unit
+   \ template
+   \ timezone
+   \ user
+   \ windows_ad_join
+   \ windows_auto_run
+   \ windows_certificate
+   \ windows_env
+   \ windows_feature
+   \ windows_feature_dism
+   \ windows_feature_powershell
+   \ windows_firewall_rule
+   \ windows_font
+   \ windows_package
+   \ windows_pagefile
+   \ windows_path
+   \ windows_printer
+   \ windows_printer_port
+   \ windows_service
+   \ windows_share
+   \ windows_shortcut
+   \ windows_task
+   \ windows_workgroup
+   \ yum_package
+   \ yum_repository
+   \ zypper_package
+   \ zypper_repository
 
 syn keyword chefProperty abandon_process_group contained
 syn keyword chefProperty accept_eula contained
