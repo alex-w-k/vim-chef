@@ -27,126 +27,454 @@ syntax keyword inspecMatchers to to_not not_to be change eq eql equal exist have
 syntax match inspecMatchers /\<\(be\|have\)_\w\+\>/
 highlight link inspecMatchers Function
 
-syn keyword chefResource apt_package
-syn keyword chefResource apt_preference
-syn keyword chefResource apt_repository
-syn keyword chefResource apt_update
-syn keyword chefResource bash
-syn keyword chefResource batch
-syn keyword chefResource bff_package
-syn keyword chefResource breakpoint
-syn keyword chefResource build_essential
-syn keyword chefResource cab_package
-syn keyword chefResource chef_gem
-syn keyword chefResource chef_handler
-syn keyword chefResource chocolatey_config
-syn keyword chefResource chocolatey_package
-syn keyword chefResource cookbook_file
-syn keyword chefResource cron
-syn keyword chefResource cron_d
-syn keyword chefResource cron_access
-syn keyword chefResource csh
-syn keyword chefResource directory
-syn keyword chefResource dmg_package
-syn keyword chefResource dsc_resource
-syn keyword chefResource dsc_script
-syn keyword chefResource execute
-syn keyword chefResource file
-syn keyword chefResource firewalld
-syn keyword chefResource freebsd_package
-syn keyword chefResource gem_package
-syn keyword chefResource git
-syn keyword chefResource group
-syn keyword chefResource homebrew_cask
-syn keyword chefResource homebrew_package
-syn keyword chefResource homebrew_tap
-syn keyword chefResource hostname
-syn keyword chefResource http_request
-syn keyword chefResource ifconfig
-syn keyword chefResource ips_package
-syn keyword chefResource kernel_module
-syn keyword chefResource ksh
-syn keyword chefResource launchd
-syn keyword chefResource link
-syn keyword chefResource locale
-syn keyword chefResource log
-syn keyword chefResource macos_userdefaults
-syn keyword chefResource macports_package
-syn keyword chefResource mdadm
-syn keyword chefResource mount
-syn keyword chefResource msu_package
-syn keyword chefResource ohai
-syn keyword chefResource ohai_hint
-syn keyword chefResource openbsd_package
-syn keyword chefResource openssl_dhparam
-syn keyword chefResource openssl_ec_public_key
-syn keyword chefResource openssl_ec_private_key
-syn keyword chefResource openssl_rsa_public_key
-syn keyword chefResource openssl_rsa_private_key
-syn keyword chefResource openssl_x509_certificate
-syn keyword chefResource openssl_x509_crl
-syn keyword chefResource openssl_x509_request
-syn keyword chefResource osx_profile
-syn keyword chefResource package
-syn keyword chefResource pacman_package
-syn keyword chefResource paludis_package
-syn keyword chefResource perl
-syn keyword chefResource portage_package
-syn keyword chefResource powershell_package
-syn keyword chefResource powershell_package_source
-syn keyword chefResource powershell_script
-syn keyword chefResource python
-syn keyword chefResource reboot
-syn keyword chefResource registry_key
-syn keyword chefResource remote_directory
-syn keyword chefResource remote_file
-syn keyword chefResource rhsm_errata_level
-syn keyword chefResource rhsm_errata
-syn keyword chefResource rhsm_register
-syn keyword chefResource rhsm_repo
-syn keyword chefResource rhsm_subscription
-syn keyword chefResource route
-syn keyword chefResource rpm_package
-syn keyword chefResource ruby
-syn keyword chefResource ruby_block
-syn keyword chefResource script
-syn keyword chefResource service
-syn keyword chefResource smartos_package
-syn keyword chefResource solaris_package
-syn keyword chefResource ssh_known_hosts_entry
-syn keyword chefResource subversion
-syn keyword chefResource sudo
-syn keyword chefResource swap_file
-syn keyword chefResource sysctl
-syn keyword chefResource systemd_unit
-syn keyword chefResource template
-syn keyword chefResource timezone
-syn keyword chefResource user
-syn keyword chefResource windows_ad_join
-syn keyword chefResource windows_auto_run
-syn keyword chefResource windows_certificate
-syn keyword chefResource windows_env
-syn keyword chefResource windows_feature
-syn keyword chefResource windows_feature_dism
-syn keyword chefResource windows_feature_powershell
-syn keyword chefResource windows_firewall_rule
-syn keyword chefResource windows_font
-syn keyword chefResource windows_package
-syn keyword chefResource windows_pagefile
-syn keyword chefResource windows_path
-syn keyword chefResource windows_printer
-syn keyword chefResource windows_printer_port
-syn keyword chefResource windows_service
-syn keyword chefResource windows_share
-syn keyword chefResource windows_shortcut
-syn keyword chefResource windows_task
-syn keyword chefResource windows_workgroup
-syn keyword chefResource yum
-syn keyword chefResource yum_package
-syn keyword chefResource yum_repository
-syn keyword chefResource zypper_package
-syn keyword chefResource zypper_repository
+syn keyword osResource 
+  \ aide_conf
+  \ apache
+  \ apache_conf
+  \ apt
+  \ audit_policy
+  \ auditd
+  \ auditd_conf
+  \ bash
+  \ bond
+  \ bridge
+  \ bsd_service
+  \ chocolatey_package
+  \ command
+  \ cpan
+  \ cran
+  \ crontab
+  \ csv
+  \ dh_params
+  \ directory
+  \ docker
+  \ docker_container
+  \ docker_image
+  \ docker_plugin
+  \ docker_service
+  \ elasticsearch
+  \ etc_fstab
+  \ etc_group
+  \ etc_hosts
+  \ etc_hosts_allow
+  \ etc_hosts_deny
+  \ file
+  \ filesystem
+  \ firewalld
+  \ gem
+  \ group
+  \ groups
+  \ grub_conf
+  \ host
+  \ http
+  \ iis_app
+  \ iis_site
+  \ inetd_conf
+  \ ini
+  \ interface
+  \ ip6tables
+  \ iptables
+  \ json
+  \ kernel_module
+  \ kernel_parameter
+  \ key_rsa
+  \ launchd_service
+  \ limits_conf
+  \ login_defs
+  \ mount
+  \ mssql_session
+  \ mysql_conf
+  \ mysql_session
+  \ nginx
+  \ nginx_conf
+  \ npm
+  \ ntp_conf
+  \ oneget
+  \ oracledb_session
+  \ os
+  \ os_env
+  \ package
+  \ packages
+  \ parse_config
+  \ parse_config_file
+  \ passwd
+  \ pip
+  \ port
+  \ postfix_conf
+  \ postgres_conf
+  \ postgres_hba_conf
+  \ postgres_ident_conf
+  \ postgres_session
+  \ powershell
+  \ processes
+  \ rabbitmq_config
+  \ registry_key
+  \ runit_service
+  \ security_identifier
+  \ security_policy
+  \ service
+  \ shadow
+  \ ssh_config
+  \ sshd_config
+  \ ssl
+  \ sys_info
+  \ systemd_service
+  \ sysv_service
+  \ upstart_service
+  \ user
+  \ users
+  \ vbscript
+  \ virtualization
+  \ windows_feature
+  \ windows_hotfix
+  \ windows_task
+  \ wmi
+  \ x509_certificate
+  \ xinetd_conf
+  \ xml
+  \ yaml
+  \ yum
+  \ zfs_dataset
+  \ zfs_pool
 
-hi link chefResource Statement
+syn keyword cloudResource
+  \ aws_alb
+  \ aws_auto_scaling_group
+  \ aws_auto_scaling_groups
+  \ aws_billing_report
+  \ aws_billing_reports
+  \ aws_cloudformation_stack
+  \ aws_cloudtrail_trail
+  \ aws_cloudtrail_trail
+  \ aws_cloudtrail_trails
+  \ aws_cloudtrail_trails
+  \ aws_cloudwatch_alarm
+  \ aws_cloudwatch_alarm
+  \ aws_cloudwatch_log_metric_filter
+  \ aws_cloudwatch_log_metric_filter
+  \ aws_config_delivery_channel
+  \ aws_config_delivery_channel
+  \ aws_config_recorder
+  \ aws_config_recorder
+  \ aws_dynamodb
+  \ aws_ebs_volume
+  \ aws_ebs_volume
+  \ aws_ebs_volumes
+  \ aws_ebs_volumes
+  \ aws_ec2_instance
+  \ aws_ec2_instance
+  \ aws_ec2_instances
+  \ aws_ec2_instances
+  \ aws_ecr
+  \ aws_ecs_cluster
+  \ aws_ecs_clusters
+  \ aws_eks_cluster
+  \ aws_eks_cluster
+  \ aws_eks_clusters
+  \ aws_elb
+  \ aws_elb
+  \ aws_elbs
+  \ aws_elbs
+  \ aws_flow_log
+  \ aws_flow_log
+  \ aws_hosted_zone
+  \ aws_hosted_zones
+  \ aws_iam_access_key
+  \ aws_iam_access_key
+  \ aws_iam_access_keys
+  \ aws_iam_access_keys
+  \ aws_iam_account_alias
+  \ aws_iam_group
+  \ aws_iam_group
+  \ aws_iam_groups
+  \ aws_iam_groups
+  \ aws_iam_password_policy
+  \ aws_iam_password_policy
+  \ aws_iam_policies
+  \ aws_iam_policies
+  \ aws_iam_policy
+  \ aws_iam_policy
+  \ aws_iam_role
+  \ aws_iam_role
+  \ aws_iam_roles
+  \ aws_iam_root_user
+  \ aws_iam_root_user
+  \ aws_iam_saml_provider
+  \ aws_iam_saml_providers
+  \ aws_iam_user
+  \ aws_iam_user
+  \ aws_iam_users
+  \ aws_iam_users
+  \ aws_kms_key
+  \ aws_kms_key
+  \ aws_kms_keys
+  \ aws_kms_keys
+  \ aws_launch_configuration
+  \ aws_organizations_member
+  \ aws_rds_instance
+  \ aws_rds_instance
+  \ aws_rds_instances
+  \ aws_region
+  \ aws_regions
+  \ aws_route_table
+  \ aws_route_table
+  \ aws_route_tables
+  \ aws_route_tables
+  \ aws_s3_bucket
+  \ aws_s3_bucket
+  \ aws_s3_bucket_object
+  \ aws_s3_bucket_object
+  \ aws_s3_buckets
+  \ aws_s3_buckets
+  \ aws_security_group
+  \ aws_security_group
+  \ aws_security_groups
+  \ aws_security_groups
+  \ aws_sns_subscription
+  \ aws_sns_subscription
+  \ aws_sns_topic
+  \ aws_sns_topic
+  \ aws_sns_topics
+  \ aws_sns_topics
+  \ aws_sqs_queue
+  \ aws_sqs_queue
+  \ aws_sqs_queues
+  \ aws_sts_caller_identity
+  \ aws_subnet
+  \ aws_subnet
+  \ aws_subnets
+  \ aws_subnets
+  \ aws_vpc
+  \ aws_vpc
+  \ aws_vpcs
+  \ aws_vpcs
+  \ azure_generic_resource
+  \ azure_resource_group
+  \ azure_virtual_machine
+  \ azure_virtual_machine_data_disk
+  \ azurerm_ad_user
+  \ azurerm_ad_users
+  \ azurerm_aks_cluster
+  \ azurerm_aks_clusters
+  \ azurerm_key_vault
+  \ azurerm_key_vault_key
+  \ azurerm_key_vault_keys
+  \ azurerm_key_vault_secret
+  \ azurerm_key_vault_secrets
+  \ azurerm_key_vaults
+  \ azurerm_locks
+  \ azurerm_management_group
+  \ azurerm_management_groups
+  \ azurerm_monitor_activity_log_alert
+  \ azurerm_monitor_activity_log_alerts
+  \ azurerm_monitor_log_profile
+  \ azurerm_monitor_log_profiles
+  \ azurerm_network_security_group
+  \ azurerm_network_security_groups
+  \ azurerm_network_watcher
+  \ azurerm_network_watchers
+  \ azurerm_resource_groups
+  \ azurerm_role_definition
+  \ azurerm_role_definitions
+  \ azurerm_security_center_policies
+  \ azurerm_security_center_policy
+  \ azurerm_sql_database
+  \ azurerm_sql_databases
+  \ azurerm_sql_server
+  \ azurerm_sql_servers
+  \ azurerm_storage_account_blob_container
+  \ azurerm_storage_account_blob_containers
+  \ azurerm_subnet
+  \ azurerm_subnets
+  \ azurerm_virtual_machine
+  \ azurerm_virtual_machine_disk
+  \ azurerm_virtual_machines
+  \ azurerm_virtual_network
+  \ azurerm_virtual_networks
+  \ azurerm_webapp
+  \ azurerm_webapps
+  \ google_appengine_standard_app_version
+  \ google_appengine_standard_app_versions
+  \ google_bigquery_dataset
+  \ google_bigquery_datasets
+  \ google_bigquery_table
+  \ google_bigquery_tables
+  \ google_cloudbuild_trigger
+  \ google_cloudbuild_triggers
+  \ google_cloudfunctions_cloud_function
+  \ google_cloudfunctions_cloud_functions
+  \ google_compute_address
+  \ google_compute_autoscaler
+  \ google_compute_autoscalers
+  \ google_compute_backend_bucket
+  \ google_compute_backend_buckets
+  \ google_compute_backend_service
+  \ google_compute_backend_services
+  \ google_compute_disk
+  \ google_compute_disks
+  \ google_compute_firewall
+  \ google_compute_firewalls
+  \ google_compute_forwarding_rule
+  \ google_compute_forwarding_rules
+  \ google_compute_global_address
+  \ google_compute_global_addresses
+  \ google_compute_global_forwarding_rule
+  \ google_compute_global_forwarding_rules
+  \ google_compute_health_check
+  \ google_compute_health_checks
+  \ google_compute_http_health_check
+  \ google_compute_http_health_checks
+  \ google_compute_https_health_check
+  \ google_compute_https_health_checks
+  \ google_compute_image
+  \ google_compute_instance
+  \ google_compute_instance_group
+  \ google_compute_instance_group_manager
+  \ google_compute_instance_group_managers
+  \ google_compute_instance_groups
+  \ google_compute_instance_template
+  \ google_compute_instance_templates
+  \ google_compute_instances
+  \ google_compute_network
+  \ google_compute_network_endpoint_group
+  \ google_compute_network_endpoint_groups
+  \ google_compute_networks
+  \ google_compute_node_group
+  \ google_compute_node_groups
+  \ google_compute_node_template
+  \ google_compute_node_templates
+  \ google_compute_project_info
+  \ google_compute_region
+  \ google_compute_region_backend_service
+  \ google_compute_region_backend_services
+  \ google_compute_region_instance_group_manager
+  \ google_compute_region_instance_group_managers
+  \ google_compute_regional_disk
+  \ google_compute_regions
+  \ google_compute_route
+  \ google_compute_router
+  \ google_compute_routers
+  \ google_compute_routes
+  \ google_compute_snapshot
+  \ google_compute_snapshots
+  \ google_compute_ssl_certificate
+  \ google_compute_ssl_certificates
+  \ google_compute_ssl_policies
+  \ google_compute_ssl_policy
+  \ google_compute_subnetwork
+  \ google_compute_subnetwork_iam_policy
+  \ google_compute_subnetworks
+  \ google_compute_target_http_proxies
+  \ google_compute_target_http_proxy
+  \ google_compute_target_https_proxies
+  \ google_compute_target_https_proxy
+  \ google_compute_target_pool
+  \ google_compute_target_pools
+  \ google_compute_target_tcp_proxies
+  \ google_compute_target_tcp_proxy
+  \ google_compute_url_map
+  \ google_compute_url_maps
+  \ google_compute_vpn_tunnel
+  \ google_compute_vpn_tunnels
+  \ google_compute_zone
+  \ google_compute_zones
+  \ google_container_cluster
+  \ google_container_clusters
+  \ google_container_node_pool
+  \ google_container_node_pools
+  \ google_container_regional_cluster
+  \ google_container_regional_clusters
+  \ google_container_regional_node_pool
+  \ google_container_regional_node_pools
+  \ google_dataproc_cluster
+  \ google_dataproc_clusters
+  \ google_dns_managed_zone
+  \ google_dns_managed_zones
+  \ google_dns_resource_record_set
+  \ google_dns_resource_record_sets
+  \ google_filestore_instance
+  \ google_filestore_instances
+  \ google_kms_crypto_key
+  \ google_kms_crypto_key_iam_binding
+  \ google_kms_crypto_key_iam_bindings
+  \ google_kms_crypto_keys
+  \ google_kms_key_ring
+  \ google_kms_key_ring_iam_binding
+  \ google_kms_key_ring_iam_bindings
+  \ google_kms_key_rings
+  \ google_logging_folder_exclusion
+  \ google_logging_folder_exclusions
+  \ google_logging_folder_log_sink
+  \ google_logging_folder_log_sinks
+  \ google_logging_organization_log_sink
+  \ google_logging_organization_log_sinks
+  \ google_logging_project_exclusion
+  \ google_logging_project_sink
+  \ google_logging_project_sinks
+  \ google_ml_engine_model
+  \ google_ml_engine_models
+  \ google_organization
+  \ google_organization_policy
+  \ google_organizations
+  \ google_project
+  \ google_project_alert_policies
+  \ google_project_alert_policy
+  \ google_project_alert_policy_condition
+  \ google_project_iam_binding
+  \ google_project_iam_bindings
+  \ google_project_iam_custom_role
+  \ google_project_logging_audit_config
+  \ google_project_metric
+  \ google_project_metrics
+  \ google_projects
+  \ google_pubsub_subscription
+  \ google_pubsub_subscription_iam_policy
+  \ google_pubsub_subscriptions
+  \ google_pubsub_topic
+  \ google_pubsub_topic_iam_policy
+  \ google_pubsub_topics
+  \ google_redis_instance
+  \ google_redis_instances
+  \ google_resourcemanager_folder
+  \ google_resourcemanager_folders
+  \ google_resourcemanager_organization_policy
+  \ google_resourcemanager_project_iam_policy
+  \ google_runtime_config_config
+  \ google_runtime_config_config_iam_policy
+  \ google_runtime_config_configs
+  \ google_runtime_config_variable
+  \ google_runtime_config_variables
+  \ google_service_account
+  \ google_service_account_key
+  \ google_service_account_keys
+  \ google_service_accounts
+  \ google_sourcerepo_repositories
+  \ google_sourcerepo_repository
+  \ google_sql_database_instance
+  \ google_sql_database_instances
+  \ google_sql_users
+  \ google_storage_bucket
+  \ google_storage_bucket_acl
+  \ google_storage_bucket_iam_binding
+  \ google_storage_bucket_iam_bindings
+  \ google_storage_bucket_object
+  \ google_storage_bucket_objects
+  \ google_storage_buckets
+  \ google_storage_default_object_acl
+  \ google_storage_object_acl
+  \ google_user
+  \ google_users
+
+syn keyword chefHabitat
+  \ habitat_package
+  \ habitat_packages
+  \ habitat_service
+  \ habitat_services
+
+
+
+hi link osResource Statement
+hi link cloudResource Statement
+hi link chefHabitat Statement
 
 let b:current_syntax='chef-inspec'

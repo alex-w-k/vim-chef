@@ -604,3 +604,4 @@ hi link chefDirective Identifier
 hi link chefSpec Special
 
 let b:current_syntax='chef'
+set ft=chef.ruby.eruby
