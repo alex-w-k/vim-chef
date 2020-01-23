@@ -1,6 +1,6 @@
 if filereadable('metadata.rb') || filereadable('.kitchen.yml') || filereadable('kitchen.yml')
   augroup ChefFileTypes
-    au! BufRead,BufNewFile */attributes/*.rb,*/libraries/*.rb,*/recipes/*.rb,*/resources/*.rb,*/spec/*/*.rb set ft=chef
+    au! BufRead,BufNewFile */attributes/*.rb,*/libraries/*.rb,*/recipes/*.rb,*/resources/*.rb,*/spec/*/*.rb set ft=chef.ruby.eruby
     au! BufRead,BufNewFile */templates/*.conf.erb,*/templates/*/*.conf.erb,*/templates/*.erb,*/templates/*/*.erb set ft=conf.eruby
     au! BufRead,BufNewFile */templates/*.sh.erb,*/templates/*/*.sh.erb set ft=sh.eruby
     au! BufRead,BufNewFile */templates/*.ps1.erb,*/templates/*/*.ps1.erb set ft=ps1.eruby
@@ -11,7 +11,8 @@ if filereadable('metadata.rb') || filereadable('.kitchen.yml') || filereadable('
     au! BufRead,BufNewFile */tempaltes/*.mobileconfig.erb,*/templates/*/*.mobileconfig.erb set ft=xml.eruby
     au! BufRead,BufNewFile */templates/*.xml.erb,*/templates/*/*.xml.erb set ft=xml.eruby
     au! BufRead,BufNewFile */controls/*.rb set ft=chef-inspec
-    au! BufRead,BufNewFile *yml,*yaml set ft=eruby
+    au! BufRead,BufNewFile *yml,*yaml set ft=yaml.eruby
+    au! BufRead,BufNewFile metadata.rb set ft=chef-metadata.ruby
   augroup END
 endif
 
