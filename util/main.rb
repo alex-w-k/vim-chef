@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby -I~/git/chef/lib/chef/lib
 require 'chef'
+require 'chef/resource_inspector'
 require 'berkshelf'
 require 'pry'
-require 'chef/resource_inspector'
 
 @collected_resources = {}
 def add_resources(resource)
@@ -12,15 +12,15 @@ def add_resources(resource)
     resource[k][:properties].each do |p|
       p[:name] = p[:name].to_s
       # Get rid of everything but the property name
-      p.select! { |k, v| [:name].include?(k) }
+      p.select! { |key, _v| [:name].include?(key) }
     end
     # delete the name property as we don't need it.
     resource[k][:properties].delete(name: 'name')
-    # break out of a hash to just the name of the resource pointing to 
+    # break out of a hash to just the name of the resource pointing to
     # an array of properties to make it easier to work with!
     resource[k][:properties] = resource[k][:properties].map { |prop| prop[:name] }
     # Rename verifications to verify to conform to how it's actually written
-    resource[k][:properties].each { |e| if (e == "verifications"); e.replace("verify") end; }
+    resource[k][:properties].each { |e| e.replace('verify') if e == 'verifications' }
     resource[k][:properties] << 'action'
     windows_fixer(resource, k) if k.to_s == 'file'
     windows_fixer(resource, k) if k.to_s == 'directory'
@@ -31,16 +31,16 @@ def add_resources(resource)
 end
 
 def windows_fixer(resource, k)
-  unless Chef::Platform.windows?
-    resource[k][:properties] << 'rights' 
-    resource[k][:properties] << 'deny_rights'
-  else
+  if Chef::Platform.windows?
     resource[k][:properties] << 'mode'
     resource[k][:properties] << 'group'
+  else
+    resource[k][:properties] << 'rights'
+    resource[k][:properties] << 'deny_rights'
   end
 end
 
-def get_custom_resources
+def collect_custom_resources
   # Pull in all cookbooks from berks default install directory
   cookbook_store = Berkshelf::CookbookStore.new(Berkshelf::CookbookStore.default_path)
   cached_cookbooks = {}
@@ -68,7 +68,7 @@ def get_custom_resources
   end
 end
 
-def get_native_resources
+def collect_native_resources
   resource_classes = Chef::Resource.descendants
   resource_classes.each do |klass|
     resource = {}
@@ -95,6 +95,6 @@ def output_vimscript
   end
 end
 
-get_native_resources
-get_custom_resources
+collect_native_resources
+collect_custom_resources
 output_vimscript
