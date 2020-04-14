@@ -4,7 +4,9 @@ require 'chef/resource_inspector'
 require 'berkshelf'
 require 'pry'
 
-@collected_resources = {}
+@collected_resources      = {}
+@collected_metadata_items = []
+
 def add_resources(resource)
   resource.keys.each do |k|
     # Get rid of everything except the properties, because that's all we care about
@@ -79,24 +81,28 @@ def collect_native_resources
   end
 end
 
+def collect_metadata_items
+  Chef::Cookbook::Metadata::COMPARISON_FIELDS.each { |field| @collected_metadata_items << field.to_s }
+  @collected_metadata_items.sort!
+end
+
 def output_vimscript
   @collected_resources.sort.each do |name, properties|
-    # syn region fileResourceBlock start='\<file\>' skip='\<end:' end='\<end\>' contains=@ruby,fileResource,fileProperty keepend transparent
-    # syn match fileResource 'file\( do\)\@!' contained
-    # syn region fileResourceSimple start='\<file\> \(\'\|\"\).*\(\'\|\"\)\n' skip='\n:' end='\n' contains=@ruby,fileResource
-    # syn keyword fileProperty contained atomic_update backup checksum content force_unlink group ignore_failure manage_symlink_source mode owner path retries retry_delay sensitive verify
-    # syn cluster chefResource add=fileResourceBlock
-    puts "syn region #{name}ResourceBlock start='\\<#{name}\\>' skip='\\<end:' end='\\<end\\>' contains=@ruby,#{name}Resource,#{name}Property keepend transparent"
+    puts "\" #{name} ----------- "
+    puts "syn region #{name}ResourceBlock start='\\<#{name}\\>' skip='\\<end:' end='\\<end\\>' contains=@ruby,#{name}Resource,#{name}Property,chefDSL,chefConditional keepend transparent"
     puts "syn match #{name}Resource '#{name}\\( do\\)\\@!' contained"
     puts "syn region #{name}ResourceSimple start='\\<#{name}\\> \\(\\'\\|\\\"\\).*\\(\\'\\|\\\"\\)\\n' skip='\\n:' end='\\n' contains=@ruby,#{name}Resource"
     puts "syn keyword #{name}Property contained #{properties.join(' ')}"
     puts ''
     puts "hi link #{name}Resource Statement"
     puts "hi link #{name}Property Identifier"
-    puts '" ----------'
   end
+
+  puts '----------------- METADATA -------------'
+  puts "syn keyword chefMetadata #{@collected_metadata_items.join(' ')}"
 end
 
 collect_native_resources
 collect_custom_resources
+collect_metadata_items
 output_vimscript
