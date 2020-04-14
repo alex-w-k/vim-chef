@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby -I~/git/chef/lib/chef/lib
 require 'chef'
-# require 'chef/resource_inspector'
+require 'chef/resource_inspector' if Gem::Version.new(Chef::VERSION) < 14
 require 'berkshelf'
 require 'pry'
 require 'optparse'
@@ -74,7 +74,7 @@ def extract_cookbooks(cookbooks, skipped_cookbooks)
     # Find all libraries and then require them so Chef can build the resources.
     libraries = cookbooks[name].files_for(:libraries)
     skip = false
-    libraries.each do |library| 
+    libraries.each do |library|
       begin
         require library['full_path']
       rescue
@@ -105,34 +105,34 @@ def extract_resource(resource, complete = false)
   data[:preview] = resource.preview_resource if resource.respond_to?(:preview_resource)
 
   properties = unless complete
-                  resource.properties.reject { |_, k| k.options[:declared_in] == Chef::Resource || k.options[:skip_docs] }
-                else
-                  resource.properties.reject { |_, k| k.options[:skip_docs] }
-                end
+                 resource.properties.reject { |_, k| k.options[:declared_in] == Chef::Resource || k.options[:skip_docs] }
+               else
+                 resource.properties.reject { |_, k| k.options[:skip_docs] }
+               end
 
   data[:properties] = properties.each_with_object([]) do |(n, k), acc|
     opts = k.options
     acc << { name: n, description: opts[:description],
-              introduced: opts[:introduced], is: opts[:is],
-              deprecated: opts[:deprecated] || false,
-              required: opts[:required] || false,
-              default: opts[:default_description] || get_default(opts[:default]),
-              name_property: opts[:name_property] || false,
-              equal_to: opts[:equal_to] || [] }
+             introduced: opts[:introduced], is: opts[:is],
+             deprecated: opts[:deprecated] || false,
+             required: opts[:required] || false,
+             default: opts[:default_description] || get_default(opts[:default]),
+             name_property: opts[:name_property] || false,
+             equal_to: opts[:equal_to] || [] }
   end
   data
 end
 
 def get_default(default)
-    if default.is_a?(Chef::DelayedEvaluator)
-      # ideally we'd get the block we pass to `lazy`, but the best we can do
-      # is to get the source location, which then results in reparsing the source
-      # code for the resource ourselves and just no
-      "lazy default"
-    else
-      default.is_a?(Symbol) ? default.inspect : default # inspect properly returns symbols
-    end
+  if default.is_a?(Chef::DelayedEvaluator)
+    # ideally we'd get the block we pass to `lazy`, but the best we can do
+    # is to get the source location, which then results in reparsing the source
+    # code for the resource ourselves and just no
+    'lazy default'
+  else
+    default.is_a?(Symbol) ? default.inspect : default # inspect properly returns symbols
   end
+end
 
 def collect_native_resources
   resource_classes = Chef::Resource.descendants
