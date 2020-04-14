@@ -24,6 +24,8 @@ def add_resources(resource)
     resource[k][:properties] << 'action'
     windows_fixer(resource, k) if k.to_s == 'file'
     windows_fixer(resource, k) if k.to_s == 'directory'
+    resource[k][:properties] << 'source' if k.to_s == 'template'
+    resource[k][:properties] << 'source' if k.to_s == 'cookbook_file'
 
     resource[k] = resource[k][:properties].sort!
   end
