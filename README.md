@@ -41,6 +41,7 @@ Next up to do:
 Current Issues
 ==============
 - Currently there is an issue with properties highlighting and breaking the syntax highlighting if scrolling up and the property is a different Resource name. 
+  - Seems to only happen when the property/resource is the last line before the `end`
   - Possible fixes would be to get better rejection if the properties are other resources.
   - Or to move the Resources that are properties down at the bottom so they are the last to be read.
 - User is improperly named, and therefor no syntax highlighting.
