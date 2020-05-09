@@ -1,14 +1,42 @@
 #!/usr/bin/env ruby -I~/git/chef/lib/chef/lib
 require 'chef'
-require 'chef/resource_inspector' if Gem::Version.new(Chef::VERSION) < 14
+require 'chef/resource_inspector' if Gem::Version.new(Chef::VERSION) > Gem::Version.new(14) 
 require 'berkshelf'
 require 'pry'
 require 'optparse'
 
 @options = {}
 OptionParser.new do |opts|
-  opts.banner = "Usage: util/main.rb [options]"
+  opts.banner = 'Usage: util/main.rb [options]'
 
+  opts.on('-a', '--all', 'collect all resources and metadata') do |a|
+    @options[:all] = true
+  end
+
+  opts.on('-b', '--berks', 'collect all resources included in downloaded berks') do
+    @options[:berks] = true
+  end
+
+  opts.on('-i', '--intertal', 'collect all native interal chef resources') do
+    @options[:internal] = true
+  end
+
+  opts.on('-m', '--metadata', 'collect metadata methods') do
+    @options[:metadata]
+  end
+  
+  opts.on('-o', '--output', 'output to stdout') do
+    @options[:stdout] = true
+  end
+
+  opts.on('-v', '--vim', 'write to vim file(s)') do
+    @options[:vim] = true
+  end
+
+  opts.on('-h', '--help', 'Print this help') do
+    puts opts
+    exit
+  end
 end.parse!
 
 @collected_resources      = {}
@@ -151,8 +179,9 @@ end
 def output_vimscript
   @collected_resources.sort.each do |name, properties|
     puts "\" #{name} ----------- "
-    puts "syn region #{name}ResourceBlock start='\\<#{name}\\>' skip='\\<end:' end='\\<end\\>' contains=@ruby,#{name}Resource,#{name}Property,chefDSL,chefConditional keepend transparent"
-    puts "syn match #{name}Resource '#{name}\\( do\\)\\@!' contained"
+    puts "\" the below start matches #{name} as long as it's not followed by whitespace and an equals"
+    puts "syn region #{name}ResourceBlock start='\\<#{name}\\>\\(\\_s\\+=\\)\\@!' skip='\\<end:' end='\\<end\\>' contains=@ruby,#{name}Resource,#{name}Property,chefDSL,chefConditional keepend transparent"
+    puts "syn match #{name}Resource '#{name}' contained"
     puts "syn region #{name}ResourceSimple start='\\<#{name}\\> \\(\\'\\|\\\"\\).*\\(\\'\\|\\\"\\)\\n' skip='\\n:' end='\\n' contains=@ruby,#{name}Resource"
     puts "syn keyword #{name}Property contained #{properties.join(' ')}"
     puts ''
@@ -164,7 +193,14 @@ def output_vimscript
   puts "syn keyword chefMetadata #{@collected_metadata_items.join(' ')}"
 end
 
-collect_native_resources
-collect_custom_resources
-collect_metadata_items
-output_vimscript
+def collect_all
+  collect_native_resources
+  collect_custom_resources
+  collect_metadata_items
+end
+
+collect_native_resources if @options[:internal]
+collect_custom_resources if @options[:berks]
+collect_metadata_items   if @options[:metadata]
+collect_all              if @options[:all]
+output_vimscript         if @options[:stdout]
