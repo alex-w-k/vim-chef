@@ -37,6 +37,7 @@ Next up to do:
 - Figure out how to autogen chef DSL, like `platform?` `platform_family?` `value_for_platform` `value_for_platform_family`, etc
   - Possibly use `Chef::DSL::Cheffish`?
   - Probably will use something under `Chef::DSL`
+- Look at ways to encorperate `gf` functionality like in: [doougireton/vim-chef](https://github.com/dougireton/vim-chef)
 
 Current Issues
 ==============
