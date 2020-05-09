@@ -75,6 +75,7 @@ end
 def collect_native_resources
   resource_classes = Chef::Resource.descendants
   resource_classes.each do |klass|
+    binding.pry if klass.resource_name == :user_resource_abstract_base_class
     resource = {}
     resource[klass.resource_name] = ResourceInspector.extract_resource(klass, true)
     add_resources(resource) unless klass.resource_name.nil?
@@ -88,11 +89,14 @@ end
 
 def output_vimscript
   @collected_resources.sort.each do |name, properties|
+    resource_names = @collected_resources.keys.map { |k| k.to_s }
+    binding.pry
     puts "\" #{name} ----------- "
-    puts "syn region #{name}ResourceBlock start='\\<#{name}\\>' skip='\\<end:' end='\\<end\\>' contains=@ruby,#{name}Resource,#{name}Property,chefDSL,chefConditional keepend transparent"
-    puts "syn match #{name}Resource '#{name}\\( do\\)\\@!' contained"
-    puts "syn region #{name}ResourceSimple start='\\<#{name}\\> \\(\\'\\|\\\"\\).*\\(\\'\\|\\\"\\)\\n' skip='\\n:' end='\\n' contains=@ruby,#{name}Resource"
+    puts "syn region #{name}ResourceSimple start='\\<#{name}\\>.*\\n' end='\\n' contains=@ruby,#{name}Resource,chefDSL"
+    puts "syn region #{name}Variable start='\\<#{name}\\>\\s*=' end='\\n' contains=@ruby,chefDSL"
+    puts "syn region #{name}ResourceBlock start='\\<#{name}\\>.*\\<do\\>' skip='\\<end:' end='\\<end\\>' contains=@ruby,#{name}Resource,#{name}Property,chefDSL,chefConditional keepend transparent"
     puts "syn keyword #{name}Property contained #{properties.join(' ')}"
+    puts "syn match #{name}Resource '#{name}\\( do\\)\\@!' contained"
     puts ''
     puts "hi link #{name}Resource Statement"
     puts "hi link #{name}Property Identifier"

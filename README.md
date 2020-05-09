@@ -37,3 +37,10 @@ Next up to do:
 - Figure out how to autogen chef DSL, like `platform?` `platform_family?` `value_for_platform` `value_for_platform_family`, etc
   - Possibly use `Chef::DSL::Cheffish`?
   - Probably will use something under `Chef::DSL`
+
+Current Issues
+==============
+- Currently there is an issue with properties highlighting and breaking the syntax highlighting if scrolling up and the property is a different Resource name. 
+  - Possible fixes would be to get better rejection if the properties are other resources.
+  - Or to move the Resources that are properties down at the bottom so they are the last to be read.
+- User is improperly named, and therefor no syntax highlighting.
