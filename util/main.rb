@@ -24,7 +24,7 @@ OptionParser.new do |opts|
   opts.on('-m', '--metadata', 'collect metadata methods') do
     @options[:metadata]
   end
-  
+
   opts.on('-o', '--output', 'output to stdout') do
     @options[:stdout] = true
   end
@@ -165,9 +165,19 @@ end
 def collect_native_resources
   resource_classes = Chef::Resource.descendants
   resource_classes.each do |klass|
-    binding.pry if klass.resource_name == :user_resource_abstract_base_class
+    resource_fixer(klass) if klass.resource_name == :user_resource_abstract_base_class
+    next if klass.resource_name == :user_resource_abstract_base_class
     resource = {}
     resource[klass.resource_name] = Gem::Version.new(Chef::VERSION) > Gem::Version.new(14) ? ResourceInspector.extract_resource(klass, true) : extract_resource(klass, true)
+    add_resources(resource) unless klass.resource_name.nil?
+  end
+end
+
+def resource_fixer(klass)
+  case klass.resource_name
+  when :user_resource_abstract_base_class
+    resource = {}
+    resource[:user] = Gem::Version.new(Chef::VERSION) > Gem::Version.new(14) ? ResourceInspector.extract_resource(klass, true) : extract_resource(klass, true)
     add_resources(resource) unless klass.resource_name.nil?
   end
 end
@@ -180,7 +190,6 @@ end
 def output_vimscript
   @collected_resources.sort.each do |name, properties|
     resource_names = @collected_resources.keys.map { |k| k.to_s }
-    binding.pry
     puts "\" #{name} ----------- "
     puts "syn region #{name}ResourceSimple start='\\<#{name}\\>.*\\n' end='\\n' contains=@ruby,#{name}Resource,chefDSL"
     puts "syn region #{name}Variable start='\\<#{name}\\>\\s*=' end='\\n' contains=@ruby,chefDSL"
