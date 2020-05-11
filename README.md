@@ -46,3 +46,4 @@ Current Issues
   - Possible fixes would be to get better rejection if the properties are other resources.
   - Or to move the Resources that are properties down at the bottom so they are the last to be read.
 - User is improperly named, and therefor no syntax highlighting.
+  - Fixed, but not in the most elegant way. Possibly look into better way of handing this.
