@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby -I~/git/chef/lib/chef/lib
 require 'chef'
-require 'chef/resource_inspector' if Gem::Version.new(Chef::VERSION) > Gem::Version.new(14) 
+require 'chef/resource_inspector' if Gem::Version.new(Chef::VERSION) > Gem::Version.new(14)
 require 'berkshelf'
 require 'pry'
 require 'optparse'
@@ -9,7 +9,7 @@ require 'optparse'
 OptionParser.new do |opts|
   opts.banner = 'Usage: util/main.rb [options]'
 
-  opts.on('-a', '--all', 'collect all resources and metadata') do |a|
+  opts.on('-a', '--all', 'collect all resources and metadata') do
     @options[:all] = true
   end
 
@@ -111,6 +111,7 @@ def extract_cookbooks(cookbooks, skipped_cookbooks)
       end
     end
     next if skip
+
     resource = {}
 
     resources.each do |r|
@@ -167,7 +168,9 @@ def collect_native_resources
   resource_classes.each do |klass|
     resource_fixer(klass) if klass.resource_name == :user_resource_abstract_base_class
     next if klass.resource_name == :user_resource_abstract_base_class
+
     resource = {}
+
     resource[klass.resource_name] = Gem::Version.new(Chef::VERSION) > Gem::Version.new(14) ? ResourceInspector.extract_resource(klass, true) : extract_resource(klass, true)
     add_resources(resource) unless klass.resource_name.nil?
   end
@@ -189,7 +192,6 @@ end
 
 def output_vimscript
   @collected_resources.sort.each do |name, properties|
-    resource_names = @collected_resources.keys.map { |k| k.to_s }
     puts "\" #{name} ----------- "
     puts "syn region #{name}ResourceSimple start='\\<#{name}\\>.*\\n' end='\\n' contains=@ruby,#{name}Resource,chefDSL"
     puts "syn region #{name}Variable start='\\<#{name}\\>\\s*=' end='\\n' contains=@ruby,chefDSL"
@@ -211,8 +213,14 @@ def collect_all
   collect_metadata_items
 end
 
+def test
+  puts File.writable?('syntax/chef.vim')
+  binding.pry
+end
+
 collect_native_resources if @options[:internal]
 collect_custom_resources if @options[:berks]
 collect_metadata_items   if @options[:metadata]
 collect_all              if @options[:all]
 output_vimscript         if @options[:stdout]
+test
