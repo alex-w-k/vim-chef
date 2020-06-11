@@ -223,4 +223,3 @@ collect_custom_resources if @options[:berks]
 collect_metadata_items   if @options[:metadata]
 collect_all              if @options[:all]
 output_vimscript         if @options[:stdout]
-test
